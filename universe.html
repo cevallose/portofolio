@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniVerse — Metaverse for Students</title>
+
+  <style>
+    :root{
+      /* Brand (pulled from your logo vibe) */
+      --bg0:#05080a;
+      --bg1:#061417;
+      --bg2:#071f23;
+
+      --cyan:#79F2FF;
+      --cyan2:#55D7FF;
+      --white:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+
+      --surface: rgba(255,255,255,.06);
+      --surface2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.12);
+
+      --radius: 22px;
+      --radiusSm: 16px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display","SF Pro Text", Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--white);
+      line-height: 1.55;
+      letter-spacing: 0.2px;
+
+      background:
+        radial-gradient(1100px 700px at 20% 10%, rgba(121,242,255,.14), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(85,215,255,.10), transparent 55%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(121,242,255,.08), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{
+      width: min(var(--max), 92vw);
+      margin: 0 auto;
+      padding: 22px 0 70px;
+    }
+
+    /* Topbar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 8px 0 18px;
+    }
+
+    .back{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .back:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(121,242,255,.35);
+    }
+
+    .pill{
+      font-size: .92rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      padding: 8px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    @media (max-width: 860px){
+      .pill{ display:none; }
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding: 28px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(700px 400px at 15% 20%, rgba(121,242,255,.25), transparent 60%),
+        radial-gradient(700px 400px at 85% 25%, rgba(85,215,255,.16), transparent 60%),
+        linear-gradient(120deg, rgba(121,242,255,.12), rgba(255,255,255,.04), rgba(121,242,255,.08));
+      filter: blur(18px);
+      opacity: .75;
+      z-index:0;
+    }
+    .hero > *{ position:relative; z-index:1; }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 260px;
+    }
+    .logo img{
+      width: 220px;
+      max-width: 70vw;
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 14px 40px rgba(85,215,255,.20));
+    }
+
+    .hero h1{
+      margin: 14px 0 8px;
+      font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+
+    .subtitle{
+      margin:0;
+      color: rgba(255,255,255,.72);
+      max-width: 78ch;
+      font-size: 1.03rem;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .tag{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.70);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .92rem;
+    }
+    .tag.glow{
+      border-color: rgba(121,242,255,.35);
+      box-shadow: 0 0 0 4px rgba(121,242,255,.10);
+    }
+
+    .buttons{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.07);
+      font-weight: 650;
+      font-size: .95rem;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(121,242,255,.35);
+      box-shadow: 0 0 0 4px rgba(121,242,255,.10);
+    }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(121,242,255,.92), rgba(85,215,255,.86));
+      color: #041012;
+      border-color: rgba(0,0,0,0);
+      box-shadow: 0 16px 40px rgba(85,215,255,.18);
+    }
+    .btn.primary:hover{
+      background: linear-gradient(180deg, rgba(121,242,255,.98), rgba(85,215,255,.92));
+      box-shadow: 0 22px 55px rgba(85,215,255,.22);
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .section h2{
+      margin: 0 0 12px;
+      font-size: 1.08rem;
+      letter-spacing: .2px;
+    }
+    .muted{ color: var(--muted); }
+
+    /* Cards + grids */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.20);
+    }
+    .card.soft{
+      background: rgba(255,255,255,.04);
+    }
+    .card:hover{
+      border-color: rgba(121,242,255,.20);
+    }
+
+    .col-7{ grid-column: span 7; }
+    .col-5{ grid-column: span 5; }
+    .col-4{ grid-column: span 4; }
+    .col-6{ grid-column: span 6; }
+    .col-12{ grid-column: span 12; }
+
+    @media (max-width: 980px){
+      .col-7,.col-5,.col-6,.col-4{ grid-column: span 12; }
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.70);
+    }
+    li{ margin: 7px 0; }
+
+    /* “Apple-like” key stats */
+    .kpi{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .kpi b{
+      font-size: 1.25rem;
+      letter-spacing: -0.2px;
+      display:block;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,.92);
+    }
+    .kpi span{
+      color: rgba(255,255,255,.66);
+      font-size: .95rem;
+    }
+
+    /* Roadmap */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .step{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radiusSm);
+      padding: 14px;
+      position: relative;
+      overflow:hidden;
+    }
+    .step::before{
+      content:"";
+      position:absolute;
+      left:-40px;
+      top:-40px;
+      width:120px;
+      height:120px;
+      background: radial-gradient(circle at 30% 30%, rgba(121,242,255,.20), transparent 60%);
+      filter: blur(8px);
+      opacity: .8;
+    }
+    .step h3{
+      margin:0 0 8px;
+      font-size: .98rem;
+    }
+    .step p{
+      margin:0;
+      color: rgba(255,255,255,.66);
+      font-size: .94rem;
+    }
+    @media (max-width: 980px){
+      .steps{ grid-template-columns: 1fr; }
+    }
+
+    /* Footer */
+    .footer{
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.58);
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content: space-between;
+      font-size: .92rem;
+    }
+
+    .glowline{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(121,242,255,.45), transparent);
+      margin-top: 18px;
+    }
+   /* ===== FORCE VIDEO SECTION TO SHOW ===== */
+#previews {
+  display: block;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+
+.video-grid{
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.video-card{
+  position: relative;
+  overflow: hidden;
+
+  /* forces height so you can see it */
+  aspect-ratio: 16 / 9;
+  min-height: 200px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(121,242,255,.28);
+  background: rgba(255,255,255,.06); /* visible even without video */
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    0 0 0 4px rgba(121,242,255,.08);
+}
+
+.video-card video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* overlay */
+.video-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.10), rgba(0,0,0,.05));
+  pointer-events:none;
+}
+
+.video-card span{
+  position:absolute;
+  bottom: 14px;
+  left: 16px;
+  z-index: 2;
+  font-weight: 600;
+  font-size: .95rem;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 6px 18px rgba(0,0,0,.65);
+}
+
+@media (max-width: 900px){
+  .video-grid{ grid-template-columns: 1fr; }
+}
+
+
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="topbar">
+      <a class="back" href="index.html" aria-label="Back to home">← Back</a>
+      <span class="pill">Project • UniVerse</span>
+    </div>
+
+    <section class="hero">
+      <div class="brand">
+        <div class="logo" aria-label="UniVerse logo">
+          <!-- Put your uploaded logo here -->
+          <img src="images/universe.png" alt="UniVerse — Metaverse for Students" />
+        </div>
+
+        <div class="buttons">
+          <a class="btn primary" href="#overview">Explore</a>
+          <a class="btn" href="#pillars">Product Pillars</a>
+          <a class="btn" href="#roadmap">Roadmap</a>
+        </div>
+      </div>
+
+      <h1>Metaverse for students—built for learning, community, and opportunity.</h1>
+      <p class="subtitle">
+        UniVerse unifies a virtual campus world, gamified education tools, and a verified student marketplace
+        into one ecosystem—mobile-first, designed to scale cleanly.
+      </p>
+
+      <div class="meta">
+        <span class="tag glow">Campus World</span>
+        <span class="tag glow">Education Mode</span>
+        <span class="tag glow">Campus Marketplace</span>
+        <span class="tag">Mobile-first (Unity) + Web</span>
+      </div>
+
+      <div class="glowline"></div>
+    </section>
+    <!-- AMBIENT VIDEO PREVIEW -->
+<section class="section" id="previews">
+  <h2>Inside UniVerse</h2>
+  <p class="muted">A glimpse into the campus, learning, and student economy.</p>
+
+  <div class="video-grid">
+    <!-- Campus World -->
+    <div class="video-card">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="video-campus.mp4" type="video/mp4">
+      </video>
+      <span>Campus World</span>
+    </div>
+
+    <!-- Education Mode -->
+    <div class="video-card">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="video-education.mp4" type="video/mp4">
+      </video>
+      <span>Education Mode</span>
+    </div>
+
+    <!-- Marketplace -->
+    <div class="video-card">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="video-marketplace.mp4" type="video/mp4">
+      </video>
+      <span>Campus Marketplace</span>
+    </div>
+  </div>
+</section>
+
+
+    <!-- OVERVIEW -->
+    <section class="section" id="overview">
+      <div class="grid">
+        <div class="card col-7">
+          <h2>What is UniVerse?</h2>
+          <p class="muted">
+            A next-generation digital platform designed to transform how students learn, collaborate, and engage with
+            their university communities—combining a virtual campus experience, gamified education tools, and a student-driven economy.
+          </p>
+          <ul>
+            <li>Students socialize through avatars, customize dorms, and play mini-games in Campus World.</li>
+            <li>Faculty run interactive learning experiences (quizzes, challenges, progress tracking) in Education Mode.</li>
+            <li>Verified students buy/sell/trade safely in a campus-only Marketplace.</li>
+          </ul>
+        </div>
+
+        <div class="card soft col-5">
+          <h2>Why it matters</h2>
+          <div class="kpi">
+            <div>
+              <b>Engagement</b>
+              <span>Meet students where they already are—interactive, social environments.</span>
+            </div>
+            <div>
+              <b>Learning</b>
+              <span>Gamified tools that complement existing coursework and feedback.</span>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="kpi">
+            <div>
+              <b>Trust</b>
+              <span>Campus-only marketplace + moderation foundations.</span>
+            </div>
+            <div>
+              <b>Opportunity</b>
+              <span>Open-source collaboration model that builds real portfolios.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="section" id="pillars">
+      <h2>Product Pillars</h2>
+
+      <div class="grid">
+        <div class="card col-4">
+          <h2>Campus World</h2>
+          <p class="muted">A virtual campus hub for social play, mini-games, dorms, and community.</p>
+          <ul>
+            <li>Virtual campus hub + hangouts</li>
+            <li>Mini-games hub (quick multiplayer)</li>
+            <li>Dorm customization + progression</li>
+          </ul>
+        </div>
+
+        <div class="card col-4">
+          <h2>Education Mode</h2>
+          <p class="muted">Instructor tools to gamify classes with quizzes, flashcards, and assignment quests.</p>
+          <ul>
+            <li>Instructor dashboard + class spaces</li>
+            <li>Live quizzes + flashcard battles</li>
+            <li>XP, badges, streaks, leaderboards</li>
+          </ul>
+        </div>
+
+        <div class="card col-4">
+          <h2>Campus Marketplace</h2>
+          <p class="muted">A verified student-only economy for buy/sell/trade—designed for trust and safety.</p>
+          <ul>
+            <li>Listings + images + categories</li>
+            <li>Messaging + meetup preferences</li>
+            <li>Reputation + reporting</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM STRATEGY -->
+    <section class="section" id="platform">
+      <div class="grid">
+        <div class="card col-6">
+          <h2>One platform. Multiple surfaces.</h2>
+          <p class="muted">
+            UniVerse launches with a unified account + backend, delivered through a Unity mobile client
+            and a web app—web screens can be embedded inside Unity (WebView) for a single-brand feel.
+          </p>
+          <ul>
+            <li>Unity Mobile App: Campus World + mini-games + social presence</li>
+            <li>Web App: Marketplace + faculty tools + admin/mod tools</li>
+            <li>Shared backend: identity, economy, education, marketplace</li>
+          </ul>
+        </div>
+
+        <div class="card soft col-6">
+          <h2>MVP Core Loop</h2>
+          <p class="muted">
+            The first launch proves retention with a simple loop that students repeat weekly.
+          </p>
+          <ul>
+            <li>Login → choose campus → enter hub → meet friends</li>
+            <li>Play a mini-game → earn coins/XP → decorate dorm → repeat</li>
+            <li>Optional: join a class → play a live quiz → earn learning badges</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section" id="roadmap">
+      <h2>Roadmap</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Phase 1 — MVP</h3>
+          <p>Hub + dorm, 2 mini-games, Marketplace v1, Education live quiz v1, WebView embed.</p>
+        </div>
+        <div class="step">
+          <h3>Phase 2 — Retention</h3>
+          <p>Add games, events, leaderboards, stronger marketplace trust/safety, more education templates.</p>
+        </div>
+        <div class="step">
+          <h3>Phase 3 — Integrations</h3>
+          <p>University SSO and roster imports; official campus events and branded rewards.</p>
+        </div>
+        <div class="step">
+          <h3>Phase 4 — League</h3>
+          <p>Cross-campus matchmaking, seasonal competitions, and partnerships at scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE / CLUB -->
+    <section class="section" id="collaboration">
+      <div class="grid">
+        <div class="card col-7">
+          <h2>Open-source collaboration program</h2>
+          <p class="muted">
+            UniVerse is built as an open-source initiative supported by a student collaboration model—contributors gain
+            real-world experience in software development, game design, systems architecture, and teamwork.
+          </p>
+          <ul>
+            <li>GitHub-based workflows + mentorship</li>
+            <li>Cross-disciplinary teams (dev, security, design)</li>
+            <li>Portfolio building through production-level features</li>
+          </ul>
+        </div>
+
+        <div class="card soft col-5">
+          <h2>Call to action</h2>
+          <p class="muted">Want to help build the future of student life?</p>
+          <div class="buttons" style="margin-top:12px;">
+            <a class="btn primary" href="#">Request a Demo</a>
+            <a class="btn" href="#">Join as a Contributor</a>
+          </div>
+          <p class="muted" style="margin-top:12px; font-size:.92rem;">
+            Replace the # links with your real demo / GitHub / contact links.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> UniVerse</div>
+      <div class="muted">Minimal • Cyan glow • Dark teal</div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

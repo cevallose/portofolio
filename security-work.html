@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security Analyst Work</title>
+
+  <style>
+    :root{
+      --bg:#f4f5f4;
+      --card:#ffffff;
+      --border:rgba(0,0,0,.08);
+
+      --text:#111;
+      --muted:rgba(0,0,0,.65);
+
+      /* calm “security blue” accent */
+      --accent:#1e4e8c;
+      --accentSoft:rgba(30,78,140,.08);
+
+      --radius:18px;
+      --max:1040px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    .container{
+      width:min(var(--max),92vw);
+      margin:0 auto;
+      padding:32px 0 64px;
+    }
+
+    /* Topbar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:24px;
+      gap:12px;
+    }
+
+    .back{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      transition:.2s ease;
+    }
+    .back:hover{
+      transform:translateY(-1px);
+      box-shadow:0 6px 16px rgba(0,0,0,.08);
+    }
+
+    .pill{
+      font-size:.85rem;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      background:#fff;
+      white-space: nowrap;
+    }
+
+    /* Hero */
+    .hero{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:28px;
+      border:1px solid var(--border);
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(1.8rem,3vw,2.4rem);
+      letter-spacing:-0.2px;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      max-width:78ch;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .tag{
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.9rem;
+      border:1px solid rgba(30,78,140,.35);
+      color:var(--accent);
+      background:var(--accentSoft);
+    }
+
+    /* Sections */
+    .section{
+      margin-top:48px;
+    }
+
+    .section h2{
+      margin:0 0 10px;
+      font-size:1.1rem;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+    }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:20px;
+    }
+    @media(max-width:900px){
+      .grid{ grid-template-columns:1fr; }
+      .pill{ display:none; }
+    }
+
+    ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+    li{ margin:7px 0; }
+
+    /* “Apple-ish” highlight blocks */
+    .highlights{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .mini{
+      border:1px solid var(--border);
+      background: #fff;
+      border-radius:16px;
+      padding:14px;
+      box-shadow:0 10px 22px rgba(0,0,0,.05);
+    }
+    .mini b{
+      display:block;
+      margin-bottom:6px;
+      letter-spacing:-0.1px;
+    }
+    .mini span{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    @media(max-width:900px){
+      .highlights{ grid-template-columns:1fr; }
+    }
+
+    /* Video */
+    .video-wrap{
+      margin-top:16px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#000;
+    }
+    .video-wrap video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:48px;
+      padding-top:16px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      font-size:.9rem;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="topbar">
+      <a class="back" href="index.html">← Back</a>
+      <span class="pill">Project • Security Analyst Work</span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Security Analyst Work</h1>
+      <p class="subtitle">
+        Threat monitoring, vulnerability assessment, incident response support, and security reporting.
+        Focused on practical improvements that reduce risk and increase visibility.
+      </p>
+
+      <div class="meta">
+        <span class="tag">Monitoring & Detection</span>
+        <span class="tag">Incident Response</span>
+        <span class="tag">Vulnerability Management</span>
+        <span class="tag">Reporting</span>
+      </div>
+
+      <div class="highlights">
+        <div class="mini">
+          <b>Detection</b>
+          <span>Investigated alerts, validated events, and escalated confirmed incidents.</span>
+        </div>
+        <div class="mini">
+          <b>Response</b>
+          <span>Supported containment & remediation planning with IT leadership.</span>
+        </div>
+        <div class="mini">
+          <b>Prevention</b>
+          <span>Reduced attack surface through patching, hardening, and policy updates.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="section">
+      <h2>Work Overview (Video)</h2>
+      <p class="subtitle">A short walkthrough of my security Training videos.</p>
+
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="security-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- RESPONSIBILITIES -->
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <h2>Core Responsibilities</h2>
+          <ul>
+            <li>Monitored systems and networks for threats, anomalies, and suspicious behavior</li>
+            <li>Performed vulnerability assessments and prioritized remediation actions</li>
+            <li>Supported incident response: triage, evidence capture, containment recommendations</li>
+            <li>Created security documentation and technical reports for stakeholders</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Tools & Concepts</h2>
+          <ul>
+            <li>Network & endpoint investigation (logs, traffic patterns, IOC checks)</li>
+            <li>Vulnerability workflows (risk ranking, patch validation)</li>
+            <li>Security baselines: least privilege, secure configs, segmentation</li>
+            <li>Clear reporting for technical + non-technical audiences</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section">
+      <div class="card">
+        <h2>My Security Process</h2>
+        <ul>
+          <li><b>Detect:</b> Monitor alerts & telemetry, identify unusual behavior</li>
+          <li><b>Validate:</b> Confirm whether the event is malicious or false positive</li>
+          <li><b>Contain:</b> Recommend steps to isolate systems and stop impact</li>
+          <li><b>Remediate:</b> Patch, harden configurations, rotate credentials if needed</li>
+          <li><b>Report:</b> Summarize findings, evidence, impact, and next steps</li>
+          <li><b>Improve:</b> Update detection rules and policies to prevent repeat incidents</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="section">
+      <div class="card">
+        <h2>Outcomes</h2>
+        <ul>
+          <li>Improved monitoring visibility and reduced time to confirm suspicious activity</li>
+          <li>Strengthened security posture through remediation planning and hardening</li>
+          <li>Produced clear security reports supporting compliance and leadership decisions</li>
+          <li>Helped standardize security workflows for repeatable response</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Elmer Cevallos</div>
+      <div>Security Analyst • Monitoring • IR • VM</div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

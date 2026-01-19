@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snipe-IT Asset Management</title>
+
+  <style>
+    :root{
+      --bg:#f4f5f4;
+      --card:#ffffff;
+      --border:rgba(0,0,0,.08);
+
+      --text:#111;
+      --muted:rgba(0,0,0,.65);
+
+      --accent:#2f6b3f;
+
+      --radius:18px;
+      --max:1040px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    .container{
+      width:min(var(--max),92vw);
+      margin:0 auto;
+      padding:32px 0 64px;
+    }
+
+    /* Topbar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:24px;
+    }
+
+    .back{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      transition:.2s ease;
+    }
+    .back:hover{
+      transform:translateY(-1px);
+      box-shadow:0 6px 16px rgba(0,0,0,.08);
+    }
+
+    .pill{
+      font-size:.85rem;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      background:#fff;
+    }
+
+    /* Hero */
+    .hero{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:28px;
+      border:1px solid var(--border);
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:clamp(1.8rem,3vw,2.4rem);
+      letter-spacing:-0.2px;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      max-width:75ch;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .tag{
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.9rem;
+      border:1px solid rgba(47,107,63,.35);
+      color:var(--accent);
+      background:rgba(47,107,63,.08);
+    }
+
+    /* Sections */
+    .section{
+      margin-top:48px;
+    }
+
+    .section h2{
+      margin:0 0 10px;
+      font-size:1.1rem;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+    }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:20px;
+    }
+
+    @media(max-width:900px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    li{ margin:7px 0; }
+
+    /* Video */
+    .video-wrap{
+      margin-top:16px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#000;
+    }
+
+    .video-wrap video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:48px;
+      padding-top:16px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      font-size:.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="topbar">
+      <a class="back" href="index.html">← Back</a>
+      <span class="pill">Project • Snipe-IT</span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Snipe-IT Asset Management</h1>
+      <p class="subtitle">
+        Deployment and customization of Snipe-IT to track IT assets, improve accountability,
+        and streamline inventory management across the organization.
+      </p>
+
+      <div class="meta">
+        <span class="tag">Asset Tracking</span>
+        <span class="tag">IT Operations</span>
+        <span class="tag">Process Improvement</span>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="section">
+      <h2>System Walkthrough</h2>
+      <p class="subtitle">
+        Overview of the asset lifecycle, check-in/check-out process, and reporting workflows.
+      </p>
+
+      <div class="video-wrap">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="snipe-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <h2>Overview</h2>
+          <p class="subtitle">
+            Snipe-IT was implemented to centralize hardware and software asset tracking,
+            reduce loss, and give IT staff real-time visibility into inventory status.
+          </p>
+
+          <ul>
+            <li>Tracked laptops, desktops, peripherals, and licenses</li>
+            <li>Standardized check-in / check-out procedures</li>
+            <li>Improved accountability for assigned assets</li>
+            <li>Reduced manual tracking and spreadsheet usage</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Key Contributions</h2>
+          <ul>
+            <li>Deployed and configured Snipe-IT for production use</li>
+            <li>Defined asset categories, models, and status labels</li>
+            <li>Implemented user assignment and audit workflows</li>
+            <li>Improved documentation and IT onboarding processes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="section">
+      <div class="card">
+        <h2>Impact</h2>
+        <ul>
+          <li>Improved asset visibility and lifecycle tracking</li>
+          <li>Faster issue resolution and device reassignment</li>
+          <li>More accurate inventory reporting for planning and audits</li>
+          <li>Cleaner, more professional IT operations workflow</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Elmer Cevallos</div>
+      <div>Snipe-IT • Asset Management</div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
