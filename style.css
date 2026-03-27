@@ -651,7 +651,7 @@ footer{
 
 /* Accent bullets (optional) */
 .skill-group li::marker {
-  color: #2f6b3f;
+  color: #d7d7d7;
 }
 
 /* Hover (subtle, Apple-like) */
@@ -761,7 +761,7 @@ footer{
 /* ===== CORE SKILLS SECTION ===== */
 
 .core-skills {
-  background: #f4f5f4;
+  background: #d7d7d7;
   padding: 4rem 0;
 }
 
@@ -776,7 +776,7 @@ footer{
 }
 
 .skill-group {
-  background: #ffffff;
+  background: #d7d7d7;
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.06);
@@ -795,7 +795,7 @@ footer{
   padding: 20px 22px;
   font-size: 1rem;
   font-weight: 600;
-  color: #111;
+  color: #d7d7d7;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -810,7 +810,7 @@ footer{
   content: "+";
   font-size: 1.2rem;
   font-weight: 500;
-  color: #2f6b3f;
+  color: #d7d7d7;
   transition: transform 0.2s ease;
 }
 
