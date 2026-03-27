@@ -476,5 +476,22 @@ I combine technical depth with a strong sense of ownership and initiative, havin
     }
   })();
 </script>
+  <script>
+  const revealElements = document.querySelectorAll(
+    ".card, .skill-group, .timeline-item, .grid-col, .contact-card, .hero"
+  );
+
+  revealElements.forEach((el) => el.classList.add("reveal"));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach((el) => observer.observe(el));
+</script>
 </body>
 </html>
