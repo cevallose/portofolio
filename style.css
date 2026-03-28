@@ -1078,7 +1078,7 @@ a.text-link:hover::after,
 
 .bg-img img {
   width: 65%;
-  height: calc(80vh + 2.875rem);
+  height: calc(70vh + 2.875rem);
   position: absolute;
   right: 0;
   top: -2.875rem;
